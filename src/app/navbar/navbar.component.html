@@ -2,16 +2,30 @@
   <mat-sidenav-container class="custom-sidenav-container volScherm">
     <mat-sidenav mode="side" opened="true" >
       <mat-nav-list>
-<!--        <a mat-list-item routerLink="/home" routerLinkActive="active"-->
-<!--           [routerLinkActiveOptions]="{ exact: true }">Login</a>-->
-        <a mat-list-item routerLink="/dashboard" routerLinkActive="active"
+        <!-- ALLES VOOR DE GUESTGEBRUIKER -->
+        <a mat-list-item routerLink="/dashboard" routerLinkActive="active" *ngIf="!nav.admin"
            [routerLinkActiveOptions]="{ exact: true }"
         >Dashboard</a>
-        <a mat-list-item routerLink="/meldingen" routerLinkActive="active"
+        <a mat-list-item routerLink="/meldingen" routerLinkActive="active" *ngIf="!nav.admin"
            [routerLinkActiveOptions]="{ exact: true }"
         >Meldingen</a>
+        <!-- ALES VOOR DE ADMIN GEBRUIKER -->
+        <a mat-list-item routerLink="/dashboardAdmin" routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }" *ngIf="nav.admin">Dashboard</a>
+        <a mat-list-item routerLink="/beheer_meldingen" routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }" *ngIf="nav.admin">Beheer meldingen</a>
+        <a mat-list-item routerLink="/beheer_personen" routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }" *ngIf="nav.admin">Beheer personen</a>
+        <a mat-list-item routerLink="/beheer_plaatsen" routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }" *ngIf="nav.admin">Beheer plaatsen</a>
+        <a mat-list-item routerLink="/beheer_types" routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }" *ngIf="nav.admin">Beheer type's</a>
+        <a mat-list-item routerLink="/grafieken" routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }" *ngIf="nav.admin">Grafieken</a>
         <a mat-list-item routerLink="/live_chart" routerLinkActive="active"
-           [routerLinkActiveOptions]="{ exact: true }"*ngIf="nav.admin">Live chart</a>
+           [routerLinkActiveOptions]="{ exact: true }" *ngIf="nav.admin">Live chart</a>
+
+        <!-- UITLOGGEN -->
         <a mat-list-item routerLink="" routerLinkActive="active"
            (click)="Uitloggen()">Logout</a>
       </mat-nav-list>

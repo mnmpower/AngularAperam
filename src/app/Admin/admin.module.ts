@@ -1,17 +1,29 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {LiveChartComponent} from "./live-chart/live-chart.component";
-
+import {DashboardAdminComponent} from './dashboard-admin/dashboard-admin.component';
+import {BeheerMeldingenComponent} from './beheer-meldingen/beheer-meldingen.component';
+import {BeheerPlaatsComponent} from './beheer-plaats/beheer-plaats.component';
+import {BeheerPersoonComponent} from './beheer-persoon/beheer-persoon.component';
+import {BeheerTypeComponent} from './beheer-type/beheer-type.component';
+import {GrafiekenComponent} from './grafieken/grafieken.component';
 
 
 @NgModule({
   declarations: [
+    BeheerMeldingenComponent,
+    BeheerPlaatsComponent,
+    BeheerPersoonComponent,
+    BeheerTypeComponent,
+    DashboardAdminComponent,
+    GrafiekenComponent,
     LiveChartComponent],
   imports: [
     CommonModule
   ],
-  exports:[
+  exports: [
     LiveChartComponent
   ]
 })
-export class AdminModule { }
+export class AdminModule {
+}
