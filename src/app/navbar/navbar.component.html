@@ -1,0 +1,29 @@
+<nav *ngIf="nav.visible">
+  <mat-sidenav-container class="custom-sidenav-container volScherm">
+    <mat-sidenav mode="side" opened="true" >
+      <mat-nav-list>
+<!--        <a mat-list-item routerLink="/home" routerLinkActive="active"-->
+<!--           [routerLinkActiveOptions]="{ exact: true }">Login</a>-->
+        <a mat-list-item routerLink="/dashboard" routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }"
+        >Dashboard</a>
+        <a mat-list-item routerLink="/meldingen" routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }"
+        >Meldingen</a>
+        <a mat-list-item routerLink="/live_chart" routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }"*ngIf="nav.admin">Live chart</a>
+        <a mat-list-item routerLink="" routerLinkActive="active"
+           (click)="Uitloggen()">Logout</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet>
+
+
+      </router-outlet>
+
+
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</nav>

@@ -1,0 +1,10 @@
+<div *ngIf="!nav.visible">
+  <p >
+    Login plaatsen voor admin
+  </p>
+  <button (click)="DoorgaanAlsGuest()">Doogaan als guest</button>
+  <button (click)="DoorgaanAlsAdmin()">Doogaan als Admin</button>
+</div>
+
+
+<div *ngIf="nav.visible"></div>
