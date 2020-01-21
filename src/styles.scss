@@ -8,4 +8,28 @@ body{
   font-family: DINPro, Geneva, sans-serif;
   background-color: #F3F3F3;
   margin-left: 250px;
+  width: 1300px;
+}
+
+.section{
+  background-color: #FFFFFF;
+  padding: 20px 20px ;
+}
+
+h1 h2 h3 {
+
+  font-weight: bold;
+}
+
+button {
+  background-color: #F1B90B;
+  border: none;
+  color: white;
+  padding: 12px 28px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
 }

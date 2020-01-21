@@ -14,8 +14,15 @@ mat-nav-list.list-horizontal {
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 60px;
 
+
   .mat-list-item{
-    margin-left: 10px;
+    padding-left: 10px;
+    color: #8E97A4;
+  }
+  .mat-list-item:hover{
+    border-left: 6px solid #F1B90B;
+    padding-left: 4px;
+    background-color: #F5F5F5;
   }
 
 
