@@ -7,6 +7,7 @@ import {BeheerPlaatsComponent} from './beheer-plaats/beheer-plaats.component';
 import {BeheerPersoonComponent} from './beheer-persoon/beheer-persoon.component';
 import {BeheerTypeComponent} from './beheer-type/beheer-type.component';
 import {GrafiekenComponent} from './grafieken/grafieken.component';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -18,9 +19,10 @@ import {GrafiekenComponent} from './grafieken/grafieken.component';
     DashboardAdminComponent,
     GrafiekenComponent,
     LiveChartComponent],
-  imports: [
-    CommonModule
-  ],
+    imports: [
+        CommonModule,
+        FormsModule
+    ],
   exports: [
     LiveChartComponent
   ]
