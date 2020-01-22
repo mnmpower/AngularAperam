@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {MeldingService} from "../../Services/melding.service";
+import {Melding} from "../../Models/melding.model";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-meldingen',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MeldingenComponent implements OnInit {
 
-  constructor() { }
+  meldingen: Melding[];
+
+  constructor(
+    private meldingService: MeldingService,
+  ) { }
 
   ngOnInit() {
+   this.meldingService.getMeldingen().subscribe(r => {
+      console.log(r);
+     this.meldingen = r;
+   });
   }
 
 }

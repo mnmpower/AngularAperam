@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import { MeldingenComponent } from './meldingen/meldingen.component';
+import {MeldingService} from "../Services/melding.service";
 
 
 
@@ -15,6 +16,9 @@ import { MeldingenComponent } from './meldingen/meldingen.component';
   ],
   imports: [
     CommonModule
+  ],
+  providers: [
+    MeldingService
   ]
 })
 export class UserModule { }

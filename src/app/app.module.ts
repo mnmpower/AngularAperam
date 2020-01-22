@@ -1,6 +1,6 @@
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
 import {SharedModule} from "../Shared/shared.module";
 import {RouterModule} from "@angular/router";
 import {MatSidenavModule} from "@angular/material/sidenav";
@@ -9,8 +9,8 @@ import {UserModule} from "./User/user.module";
 import {HomeComponent} from "./home/home.component";
 import {NavbarComponent} from "./navbar/navbar.component";
 import {CommonModule} from "@angular/common";
-import { LiveChartComponent } from './Admin/live-chart/live-chart.component';
 import {AdminModule} from "./Admin/admin.module";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -25,11 +25,11 @@ import {AdminModule} from "./Admin/admin.module";
     MatSidenavModule,
     MatListModule,
     CommonModule,
-    AdminModule
+    AdminModule,
+    HttpClientModule,
   ],
-  providers: [],
   bootstrap: [AppComponent],
-  schemas: [
-  ]
+  schemas: []
 })
-export class AppModule { }
+export class AppModule {
+}
