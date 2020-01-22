@@ -8,7 +8,8 @@ body{
   font-family: DINPro, Geneva, sans-serif;
   background-color: #F3F3F3;
   margin-left: 250px;
-  width: 1300px;
+  max-width: 1300px;
+  min-width: 400px;
 }
 
 .section{
