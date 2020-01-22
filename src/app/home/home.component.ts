@@ -26,6 +26,6 @@ export class HomeComponent implements OnInit {
   DoorgaanAlsAdmin() {
     this.nav.show();
     this.nav.ShowAdmin();
-    this.router.navigate(['dashboardAdmin'], {replaceUrl: true});
+    this.router.navigate(['dashboard'], {replaceUrl: true});
   }
 }

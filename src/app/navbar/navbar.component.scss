@@ -1,3 +1,31 @@
 .volScherm{
   height: 95vh;
 }
+
+mat-nav-list.list-horizontal {
+
+
+  height: 100%; /* 100% Full-height */
+  width: 200px;
+  position: fixed;
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #FFFFFF; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px;
+
+
+  .mat-list-item{
+    padding-left: 10px;
+    color: #8E97A4;
+  }
+  .mat-list-item:hover{
+    border-left: 6px solid #F1B90B;
+    padding-left: 4px;
+    background-color: #F5F5F5;
+  }
+
+
+
+}
+
