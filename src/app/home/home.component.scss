@@ -1,4 +1,14 @@
 div{
-  text-align: center;
   margin: 20px;
+
+  text-align: center;
+
+}
+
+
+.home{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
 }

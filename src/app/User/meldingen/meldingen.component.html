@@ -1,8 +1,14 @@
-<p>Meldingen works!</p>
-<div *ngIf="meldingen.length != 0">
-  <div *ngFor="let melding of meldingen" >
+
+<h1>Meldingen</h1>
+<div *ngIf="meldingen.length != 0"  >
+  <div *ngFor="let melding of meldingen"  >
     <div  class="melding">
-      <section>{{melding?.persoon.voornaam}} {{melding?.persoon.naam}} bevond zich in de gevarenzone {{melding.plaats.naam}}</section>
+
+      <div class="title"><img src="../../../assets/Images/warning.svg"  width="25px"  alt="warning" class="svgwarning">&nbsp; Warning! </div>
+      <section> {{melding?.persoon.voornaam}} {{melding?.persoon.naam}} bevond zich in de gevarenzone {{melding.plaats.naam}}  </section>
+      <section> {{ melding?.tijdstip | date:'medium' }}  </section>
+
     </div>
   </div>
 </div>
+
