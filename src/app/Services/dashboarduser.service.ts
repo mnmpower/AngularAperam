@@ -3,15 +3,16 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Type} from '../Models/type.model';
 import {Dashboarduser} from '../ViewModels/dashboarduser.viewmodel';
+import {VariablesService} from '../../Shared/variables.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DashboarduserService {
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private variablesService: VariablesService) {
   }
 
-  private Base_URL = 'https://localhost:44356/api/';
+  private Base_URL = this.variablesService.getAPIBase_URL();
 
   getDashboardUserVM(): Observable<Dashboarduser> {
     return this.http.get<Dashboarduser>(this.Base_URL + 'DashboardUser');

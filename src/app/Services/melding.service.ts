@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Melding} from '../Models/melding.model';
+import {VariablesService} from '../../Shared/variables.service';
 
 
 @Injectable({
@@ -9,10 +10,10 @@ import {Melding} from '../Models/melding.model';
 })
 export class MeldingService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private variablesService: VariablesService) {
   }
 
-  private Base_URL = 'https://localhost:44356/api/';
+  private Base_URL = this.variablesService.getAPIBase_URL();
 
   getMeldingen(): Observable<Melding[]> {
     return this.http.get<Melding[]>(this.Base_URL + 'Melding');

@@ -2,16 +2,17 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Type} from '../Models/type.model';
+import {VariablesService} from '../../Shared/variables.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TypeService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private variablesService: VariablesService) {
   }
 
-  private Base_URL = 'https://localhost:44356/api/';
+  private Base_URL = this.variablesService.getAPIBase_URL();
 
   getTypes(): Observable<Type[]> {
     return this.http.get<Type[]>(this.Base_URL + 'Type');
