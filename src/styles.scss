@@ -10,6 +10,7 @@ body{
   margin-right: 50px;
   max-width: 1300px;
   min-width: 400px;
+  overflow: hidden;
 }
 
 .section{
@@ -26,6 +27,22 @@ h1 h2 h3 {
   font-weight: bold;
 }
 
+.buttonadd {
+  background-color: #00C087 !important;
+  padding: 4px 4px !important;
+
+  border-radius: 3px !important;
+  margin-bottom:  20px  !important;
+}
+
+.buttonremove {
+  background-color: #F32F51 !important;
+  padding: 4px 4px !important;
+
+  border-radius: 3px !important;
+
+}
+
 button {
   background-color: #F1B90B;
   border: none;
@@ -40,3 +57,12 @@ button {
 }
 
 
+
+input {
+
+  padding: 5px 10px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
