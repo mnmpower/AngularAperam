@@ -1,7 +1,8 @@
 <nav *ngIf="nav.visible">
   <mat-sidenav-container class="custom-sidenav-container volScherm">
     <mat-sidenav mode="side" opened="true" >
-      <mat-nav-list>
+      <mat-nav-list class="list-horizontal">
+
         <!-- ALLES VOOR DE GUESTGEBRUIKER -->
         <a mat-list-item routerLink="/dashboard" routerLinkActive="active" *ngIf="!nav.admin"
            [routerLinkActiveOptions]="{ exact: true }"

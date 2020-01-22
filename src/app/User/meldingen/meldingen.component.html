@@ -1,6 +1,8 @@
 <p>Meldingen works!</p>
 <div *ngIf="meldingen.length != 0">
   <div *ngFor="let melding of meldingen" >
-      <section>{{melding?.persoon.voornaam}} {{melding?.persoon.naam}} bevond zich in de gevarenzone {{melding?.plaats.naam}}</section>
+    <div  class="melding">
+      <section>{{melding?.persoon.voornaam}} {{melding?.persoon.naam}} bevond zich in de gevarenzone {{melding.plaats.naam}}</section>
+    </div>
   </div>
 </div>
