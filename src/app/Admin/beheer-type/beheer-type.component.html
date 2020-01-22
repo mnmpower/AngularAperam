@@ -1,1 +1,93 @@
-<p>beheer-type works!</p>
+<div class="container" id="scrollHere">
+  <div class="row">
+    <div class="col-md-12">
+
+      <h1>Types beheren</h1>
+      <!-- --------------------------- -->
+      <!-- TOVOEGEN VAN EEN NIEUW TYPE -->
+      <!-- --------------------------- -->
+      <div *ngIf="popupNewType">
+        <div class="popup">
+          <div (click)="closePopups()"  id="close"><i class="material-icons">
+            clear
+          </i></div>
+          <h1>Maak een nieuw type aan</h1>
+          <form  (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="functie" *ngIf="type.typeID == 0">Functie</label>
+              <input type="text" *ngIf="type.typeID == 0" class="form-control" id="functie"
+                     placeholder="Vul een functie in"
+                     [(ngModel)]="type.functie" name="functie" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary submitKnop">Toevoegen</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- ------------------------------ -->
+      <!-- BEWERKEN VAN EEN bestaand TYPE -->
+      <!-- ------------------------------ -->
+
+      <div class="popupBox" *ngIf="popupEditType">
+        <div class="popup2">
+          <div (click)="closePopups()"  id="close"><i class="material-icons">
+            clear
+          </i></div>
+          <h1>Bewerken van een type</h1>
+          <form  (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="functiee" *ngIf="type.typeID != 0">Functie</label>
+              <input type="text" *ngIf="type.typeID != 0" class="form-control" id="functiee"
+                     placeholder="Vul een functie in"
+                     [(ngModel)]="type.functie" name="functiee" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary submitKnop">Updaten</button>
+            <button (click)="closePopups()" class="btn btn-primary submitKnop">Annuleren</button>
+          </form>
+        </div>
+      </div>
+
+
+
+
+
+      <button (click)="OpenNewTypeForm()"><i class="material-icons">
+        add
+      </i></button>
+
+      <!-- ------------------------ -->
+      <!-- OVERZICHT MET ALLE TYPES -->
+      <!-- ------------------------ -->
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Functie</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let type of types">
+          <th scope="row">{{type.typeID}}</th>
+          <td>{{type.functie}}</td>
+          <td>
+
+            <button type="button" class="" (click)="OpenEditTypeForm(type.typeID)"><i
+              class="material-icons"> create
+            </i></button>
+            <button type="button" class="" (click)="deleteTypeAlert(type)"><i
+              class="material-icons">
+              delete_forever
+            </i></button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
