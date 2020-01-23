@@ -18,19 +18,15 @@ body{
   padding: 20px 20px;
   margin-bottom: 20px;
 
-
-
 }
 
 h1 h2 h3 {
-
   font-weight: bold;
 }
 
 .buttonadd {
   background-color: #00C087 !important;
   padding: 4px 4px !important;
-
   border-radius: 3px !important;
   margin-bottom:  20px  !important;
 }
@@ -38,9 +34,7 @@ h1 h2 h3 {
 .buttonremove {
   background-color: #F32F51 !important;
   padding: 4px 4px !important;
-
   border-radius: 3px !important;
-
 }
 
 button {
@@ -58,8 +52,7 @@ button {
 
 
 
-input {
-
+input, select  {
   padding: 5px 10px;
   display: inline-block;
   border: 1px solid #ccc;

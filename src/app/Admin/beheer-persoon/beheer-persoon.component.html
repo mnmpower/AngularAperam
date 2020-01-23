@@ -11,25 +11,25 @@
     <h1 *ngIf="persoon.persoonID != 0">Bewerken van een type</h1>
     <form (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <label for="voornaam">Voornaam: </label>
+        <label for="voornaam">Voornaam </label>
         <input type="text" class="form-control" id="voornaam"
                placeholder="Vul een voornaam in"
                [(ngModel)]="persoon.voornaam" name="voornaam" required>
       </div>
-      <div class="form-group">
-        <label for="naam">Naam: </label>
+      <div class="form-group mt-1" >
+        <label for="naam">Naam </label>
         <input type="text" class="form-control" id="naam"
                placeholder="Vul een naam in"
                [(ngModel)]="persoon.naam" name="naam" required>
       </div>
-      <div class="form-group">
-        <label for="usernaam">Usernaam: </label>
+      <div class="form-group mt-1">
+        <label for="usernaam">Usernaam </label>
         <input type="text" class="form-control" id="usernaam"
                placeholder="Vul een usernaam in"
                [(ngModel)]="persoon.usernaam" name="naam" required>
       </div>
-      <div class="form-group">
-        <label for="type">Type: </label>
+      <div class="form-group mt-1">
+        <label for="type">Type </label>
         <!--        <input type="text" *ngIf="persoon.persoonID == 0" class="form-control" id="type"-->
         <!--               placeholder="Vul een typeID in"-->
         <!--               [(ngModel)]="persoon.typeID" name="type" required>-->
@@ -40,13 +40,13 @@
         </select>
       </div>
       <div class="form-group">
-        <label for="wachtwoord1">Wachtwoord: </label>
+        <label for="wachtwoord1">Wachtwoord </label>
         <input type="password" class="form-control" id="wachtwoord1"
                placeholder="Vul een wachtwoord in"
                [(ngModel)]="persoon.wachtwoord" name="wachtwoord1" required>
       </div>
-      <div class="form-group">
-        <label for="wachtwoord2">bevestig wachtwoord: </label>
+      <div class="form-group mt-1">
+        <label for="wachtwoord2">bevestig wachtwoord </label>
         <input type="password" class="form-control" id="wachtwoord2"
                placeholder="Herhaal uw wachtwoord"
                [(ngModel)]="wachtwoordHerhaling" name="wachtwoord2" required>
