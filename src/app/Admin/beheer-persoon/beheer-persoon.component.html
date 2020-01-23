@@ -53,6 +53,8 @@
                [(ngModel)]="wachtwoordHerhaling" name="wachtwoord2" required>
       </div>
       <br/>
+      <div *ngIf="invalideForm">Zorg de wachtwoorden matchen en alle gegevens zijn ingevuld!</div>
+      <br/>
 
       <button *ngIf="persoon.persoonID == 0" type="submit" class="btn submitKnop ">Toevoegen</button>
       <button *ngIf="persoon.persoonID != 0" type="submit" class="btn btn-primary submitKnop">Updaten</button>
