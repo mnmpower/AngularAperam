@@ -28,11 +28,14 @@
                placeholder="Vul een usernaam in"
                [(ngModel)]="persoon.usernaam" name="naam" required>
       </div>
+<<<<<<< HEAD
       <div class="form-group mt-1">
         <label for="type">Type </label>
         <!--        <input type="text" *ngIf="persoon.persoonID == 0" class="form-control" id="type"-->
         <!--               placeholder="Vul een typeID in"-->
         <!--               [(ngModel)]="persoon.typeID" name="type" required>-->
+=======
+>>>>>>> c894673f9ad4dd0d5eaa36815a372828afc2bafa
         <select name="type" id="type" [(ngModel)]="persoon.typeID">
           <option value="0" selected>--- selecteer een type ---</option>
           <option *ngFor="let type of types" value="{{type.typeID}}">{{type.functie}}</option>
