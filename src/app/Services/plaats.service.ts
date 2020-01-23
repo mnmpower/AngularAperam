@@ -29,7 +29,7 @@ export class PlaatsService {
 
 
   addPlaats(plaats: Plaats) {
-    return this.http.post<Persoon>(this.Base_URL + 'Plaats', plaats,
+    return this.http.post<Plaats>(this.Base_URL + 'Plaats', plaats,
       {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
       });
