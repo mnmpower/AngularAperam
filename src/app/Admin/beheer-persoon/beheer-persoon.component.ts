@@ -20,6 +20,7 @@ export class BeheerPersoonComponent implements OnInit {
   types: Type[];
   persoon: Persoon = new Persoon();
   popupNewPersoon = false;
+
   // popupEditPersoon: boolean = false;
 
 
@@ -81,12 +82,12 @@ export class BeheerPersoonComponent implements OnInit {
 
   onSubmit() {
     if (this.persoon.persoonID === 0) {
-      if (this.wachtwoordHerhaling != this.persoon.wachtwoord){
-      this.invalideForm = true;
-      return;
-    } else {
-      this.invalideForm = true;
-    }
+      if (this.wachtwoordHerhaling != this.persoon.wachtwoord) {
+        this.invalideForm = true;
+        return;
+      } else {
+        this.invalideForm = true;
+      }
       console.log('post', this.persoon);
       this.persoonService.addPersoon(this.persoon).subscribe(r => {
         this.persoon.persoonID = r.persoonID;

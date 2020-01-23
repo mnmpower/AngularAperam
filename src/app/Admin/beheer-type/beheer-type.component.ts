@@ -13,7 +13,8 @@ export class BeheerTypeComponent implements OnInit {
   types: Type[];
   type: Type = new Type();
   popupNewType: boolean = false;
-  popupEditType: boolean = false;
+
+  // popupEditType: boolean = false;
 
 
   constructor(
@@ -32,7 +33,7 @@ export class BeheerTypeComponent implements OnInit {
 
   closePopups() {
     this.popupNewType = false;
-    this.popupEditType = false;
+    // this.popupEditType = false;
   }
 
   ngOnInit() {
@@ -43,7 +44,7 @@ export class BeheerTypeComponent implements OnInit {
     this.type.functie = null;
     this.type.personen = null;
     this.popupNewType = true;
-    this.popupEditType = false;
+    // this.popupEditType = false;
   }
 
 
@@ -52,8 +53,8 @@ export class BeheerTypeComponent implements OnInit {
     this.typeService.getTypeByID(typeID).subscribe(r => {
       this.type = r;
       console.log('type: ', this.type);
-      this.popupEditType = true;
-      this.popupNewType = false;
+      // this.popupEditType = true;
+      this.popupNewType = true;
     });
   }
 
@@ -85,7 +86,7 @@ export class BeheerTypeComponent implements OnInit {
 
   deleteType(id: number) {
     this.typeService.deleteType(id).subscribe(result => {
-      this.popupEditType = false;
+      // this.popupEditType = false;
       this.ReadTypes();
     });
   }
