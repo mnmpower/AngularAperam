@@ -1,39 +1,38 @@
-
-<h1>Types beheren</h1>
+<h1>Personen beheren</h1>
 <!-- ------------------------------------ -->
 <!-- TOVOEGEN EN BEWERKEN VAN EEN PERSOON -->
 <!-- ------------------------------------ -->
 <div *ngIf="popupNewPersoon" class="section">
   <div class="popup ">
-    <button class="buttonremove" (click)="closePopups()"  ><i class="material-icons">
+    <button class="buttonremove" (click)="closePopups()"><i class="material-icons">
       clear
     </i></button>
     <h1 *ngIf="persoon.persoonID == 0">Maak een nieuw persoon aan</h1>
     <h1 *ngIf="persoon.persoonID != 0">Bewerken van een type</h1>
-    <form  (ngSubmit)="onSubmit()">
+    <form (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <label for="voornaam" >Voornaam: </label>
-        <input type="text"  class="form-control" id="voornaam"
+        <label for="voornaam">Voornaam: </label>
+        <input type="text" class="form-control" id="voornaam"
                placeholder="Vul een voornaam in"
                [(ngModel)]="persoon.voornaam" name="voornaam" required>
       </div>
       <div class="form-group">
-        <label for="naam" >Naam: </label>
-        <input type="text" * class="form-control" id="naam"
+        <label for="naam">Naam: </label>
+        <input type="text" class="form-control" id="naam"
                placeholder="Vul een naam in"
                [(ngModel)]="persoon.naam" name="naam" required>
       </div>
       <div class="form-group">
-        <label for="usernaam" >Usernaam: </label>
-        <input type="text"  class="form-control" id="usernaam"
+        <label for="usernaam">Usernaam: </label>
+        <input type="text" class="form-control" id="usernaam"
                placeholder="Vul een usernaam in"
                [(ngModel)]="persoon.usernaam" name="naam" required>
       </div>
       <div class="form-group">
-        <label for="type" >Type: </label>
-<!--        <input type="text" *ngIf="persoon.persoonID == 0" class="form-control" id="type"-->
-<!--               placeholder="Vul een typeID in"-->
-<!--               [(ngModel)]="persoon.typeID" name="type" required>-->
+        <label for="type">Type: </label>
+        <!--        <input type="text" *ngIf="persoon.persoonID == 0" class="form-control" id="type"-->
+        <!--               placeholder="Vul een typeID in"-->
+        <!--               [(ngModel)]="persoon.typeID" name="type" required>-->
         <select name="type" id="type" [(ngModel)]="persoon.typeID">
           <option value="0" selected>--- selecteer een type ---</option>
           <option *ngFor="let type of types" value="{{type.typeID}}">{{type.functie}}</option>
@@ -41,22 +40,25 @@
         </select>
       </div>
       <div class="form-group">
-        <label for="wachtwoord1" >Wachtwoord: </label>
-        <input type="password"  class="form-control" id="wachtwoord1"
+        <label for="wachtwoord1">Wachtwoord: </label>
+        <input type="password" class="form-control" id="wachtwoord1"
                placeholder="Vul een wachtwoord in"
                [(ngModel)]="persoon.wachtwoord" name="wachtwoord1" required>
       </div>
       <div class="form-group">
-        <label for="wachtwoord2" >bevestig wachtwoord: </label>
+        <label for="wachtwoord2">bevestig wachtwoord: </label>
         <input type="password" class="form-control" id="wachtwoord2"
                placeholder="Herhaal uw wachtwoord"
                [(ngModel)]="wachtwoordHerhaling" name="wachtwoord2" required>
       </div>
       <br/>
+      <div *ngIf="invalideForm">Zorg de wachtwoorden matchen en alle gegevens zijn ingevuld!</div>
+      <br/>
 
       <button *ngIf="persoon.persoonID == 0" type="submit" class="btn submitKnop ">Toevoegen</button>
       <button *ngIf="persoon.persoonID != 0" type="submit" class="btn btn-primary submitKnop">Updaten</button>
-      <button *ngIf="persoon.persoonID != 0" (click)="closePopups()" class="btn btn-primary submitKnop">Annuleren</button>
+      <button *ngIf="persoon.persoonID != 0" (click)="closePopups()" class="btn btn-primary submitKnop">Annuleren
+      </button>
     </form>
   </div>
 </div>
@@ -65,13 +67,13 @@
 <div class="section">
   <button class="buttonadd" (click)="OpenNewPersoonForm()"><i class="material-icons ">
     add
-  </i></button >
+  </i></button>
 
   <!-- --------------------------- -->
   <!-- OVERZICHT MET ALLE PERSONEN -->
   <!-- --------------------------- -->
   <div style="height: 430px; overflow: auto;">
-    <table  class="table" mat-table>
+    <table class="table" mat-table>
       <thead>
       <tr>
         <th scope="col">ID</th>

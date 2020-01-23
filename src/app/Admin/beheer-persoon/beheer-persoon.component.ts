@@ -12,12 +12,15 @@ import {TypeService} from '../../Services/type.service';
 })
 export class BeheerPersoonComponent implements OnInit {
 
-  wachtwoordHerhaling: string = '';
+  invalideForm = false;
+
+  wachtwoordHerhaling = '';
 
   personen: Persoon[];
   types: Type[];
   persoon: Persoon = new Persoon();
-  popupNewPersoon: boolean = false;
+  popupNewPersoon = false;
+
   // popupEditPersoon: boolean = false;
 
 
@@ -60,6 +63,7 @@ export class BeheerPersoonComponent implements OnInit {
     this.persoon.wachtwoord = null;
     this.persoon.typeID = 0;
     this.popupNewPersoon = true;
+    this.invalideForm = false;
     // this.popupEditPersoon = false;
   }
 
@@ -71,12 +75,19 @@ export class BeheerPersoonComponent implements OnInit {
       console.log('type: ', this.persoon);
       // this.popupEditPersoon = true;
       this.popupNewPersoon = true;
+      this.invalideForm = false;
     });
   }
 
 
   onSubmit() {
     if (this.persoon.persoonID === 0) {
+      if (this.wachtwoordHerhaling != this.persoon.wachtwoord) {
+        this.invalideForm = true;
+        return;
+      } else {
+        this.invalideForm = true;
+      }
       console.log('post', this.persoon);
       this.persoonService.addPersoon(this.persoon).subscribe(r => {
         this.persoon.persoonID = r.persoonID;

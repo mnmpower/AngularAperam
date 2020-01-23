@@ -3,6 +3,7 @@
     <mat-sidenav mode="side" opened="true" >
       <mat-nav-list class="list-horizontal">
 
+        <img src="../../assets/Images/logo_no_background.png" width="100px" alt="Logo">
         <!-- ALLES VOOR DE GUESTGEBRUIKER -->
         <a mat-list-item routerLink="/dashboard" routerLinkActive="active" *ngIf="!nav.admin"
            [routerLinkActiveOptions]="{ exact: true }"
