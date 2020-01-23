@@ -41,7 +41,7 @@
   <ng-container matColumnDef="Recenstste">
     <th mat-header-cell *matHeaderCellDef> Recentste </th>
     <td mat-cell *matCellDef="let element">
-      <span *ngIf="element.overtredingen != 0">{{element.recentste}}</span>
+      <span *ngIf="element.overtredingen != 0">{{element.recentste | date:'medium' }}</span>
       <span *ngIf="element.overtredingen == 0"> - </span> </td>
   </ng-container>
 
