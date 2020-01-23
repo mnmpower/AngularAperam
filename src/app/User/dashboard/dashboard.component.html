@@ -1,8 +1,12 @@
-<mat-form-field>
-  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-</mat-form-field>
+<div class="section">
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <input type="text" matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+
+</div>
+
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 section">
 
   <!-- Position Column -->
   <ng-container matColumnDef="TagNummer">
@@ -54,3 +58,10 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 
+
+
+<script>
+  $('#filter').focus(function(){
+    $(this).removeAttr('placeholder');
+  });
+</script>
