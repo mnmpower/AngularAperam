@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Type} from '../Models/type.model';
 import {Dashboarduser} from '../ViewModels/dashboarduser.viewmodel';
 import {VariablesService} from '../../Shared/variables.service';
 
@@ -15,6 +14,6 @@ export class DashboarduserService {
   private Base_URL = this.variablesService.getAPIBase_URL();
 
   getDashboardUserVM(): Observable<Dashboarduser> {
-    return this.http.get<Dashboarduser>(this.Base_URL + 'DashboardUser');
+    return this.http.get<Dashboarduser>(this.Base_URL + 'DashboardUserVM');
   }
 }

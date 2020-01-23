@@ -10,7 +10,7 @@ import {Observable} from "rxjs";
 })
 export class MeldingenComponent implements OnInit {
 
-  meldingen: Melding[];
+  meldingen: Melding[] = [];
 
   constructor(
     private meldingService: MeldingService,
