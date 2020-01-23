@@ -1,4 +1,4 @@
-import {Persoon} from "./persoon.model";
+import {Persoon} from './persoon.model';
 
 export class Type {
 
@@ -6,4 +6,7 @@ export class Type {
   functie: string;
 
   personen: Persoon[];
+
+  constructor() {
+  }
 }

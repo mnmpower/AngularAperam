@@ -1,6 +1,6 @@
 import DateTimeFormat = Intl.DateTimeFormat;
-import {Plaats} from "./plaats.model";
-import {Persoon} from "./persoon.model";
+import {Plaats} from './plaats.model';
+import {Persoon} from './persoon.model';
 
 export class Melding {
   meldingID: number;

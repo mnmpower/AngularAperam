@@ -3,11 +3,11 @@ import {Type} from './type.model';
 
 export class Persoon {
   persoonID: number;
-  voornaam: String;
-  naam: String;
-  usernaam: String;
+  voornaam: string;
+  naam: string;
+  usernaam: string;
   typeID: number;
-  wachtwoord: String;
+  wachtwoord: string;
   meldingen: Melding[];
   type: Type;
 

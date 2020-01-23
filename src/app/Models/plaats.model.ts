@@ -1,11 +1,13 @@
-import {Melding} from "./melding.model";
+import {Melding} from './melding.model';
 
 export class Plaats {
 
-plaatsID: number;
-naam: string;
-xcord: number ;
-ycord: number ;
+  plaatsID: number;
+  naam: string;
+  xcord: number;
+  ycord: number;
 
-meldingen: Melding[];
+  meldingen: Melding[];
+  constructor() {
+  }
 }
