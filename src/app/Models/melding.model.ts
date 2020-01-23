@@ -3,8 +3,8 @@ import {Plaats} from "./plaats.model";
 import {Persoon} from "./persoon.model";
 
 export class Melding {
-  numberID: number;
-  overtrederID: number;
+  meldingID: number;
+  persoonID: number;
   plaatsID: number;
   tijdstip: DateTimeFormat;
   plaats: Plaats;

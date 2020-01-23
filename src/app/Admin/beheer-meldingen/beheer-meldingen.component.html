@@ -1,1 +1,82 @@
-<p>beheer-meldingen works!</p>
+<h1>Types beheren</h1>
+<!-- --------------------------------- -->
+<!-- TOVOEGEN EN BEWERKEN VAN EEN TYPE -->
+<!-- --------------------------------- -->
+<div *ngIf="newOrEdit" class="section">
+  <div class="popup ">
+    <button class="buttonremove" (click)="closePopup()"><i class="material-icons">
+      clear
+    </i></button>
+    <h1 *ngIf="melding.meldingID == 0">Maak een nieuw melding aan</h1>
+    <h1 *ngIf="melding.meldingID != 0">Bewerken van een melding</h1>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="persoon">Persoon </label>
+        <select name="persoon" id="persoon" [(ngModel)]="melding.persoonID">
+          <option value="0" selected >--- selecteer een persoon ---</option>
+          <option *ngFor="let persoon of personen" value="{{persoon.persoonID}}">{{persoon.naam}} {{persoon.voornaam}}</option>
+
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="plaats">Plaats </label>
+        <select name="plaats" id="plaats" [(ngModel)]="melding.plaatsID">
+          <option value="0" selected>--- selecteer een plaats ---</option>
+          <option *ngFor="let plaats of plaatsen" value="{{plaats.plaatsID}}">{{plaats.naam}}</option>
+
+        </select>
+      </div>
+      <br/>
+      <button *ngIf="melding.meldingID == 0" type="submit" class="btn submitKnop ">Toevoegen</button>
+      <button *ngIf="melding.meldingID != 0" type="submit" class="btn btn-primary submitKnop">Updaten</button>
+      <button *ngIf="melding.meldingID != 0" (click)="closePopup()" class="btn btn-primary submitKnop">Annuleren</button>
+    </form>
+  </div>
+</div>
+
+<div class="section">
+  <button class="buttonadd" (click)="OpenNewMeldingForm()"><i class="material-icons ">
+    add
+  </i></button>
+
+  <!-- ------------------------ -->
+  <!-- OVERZICHT MET ALLE TYPES -->
+  <!-- ------------------------ -->
+  <div style="height: 430px; overflow: auto;">
+    <table class="table" mat-table>
+      <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Naam</th>
+        <th scope="col">Voornaam</th>
+        <th scope="col">Tijdstip</th>
+        <th scope="col">Plaats</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let melding of meldingen">
+        <td scope="row">{{melding.meldingID}}</td>
+        <td>{{melding.persoon.voornaam}}</td>
+        <td>{{melding.persoon.naam}}</td>
+        <td>{{melding.tijdstip}}</td>
+        <td>{{melding.plaatsID}}</td>
+        <td>
+
+          <button type="button" class="" (click)="OpenEditMeldingForm(melding.meldingID)"><i
+            class="material-icons"> create
+          </i></button>
+          <button type="button" class="" (click)="deleteMeldingAlert(melding)"><i
+            class="material-icons">
+            delete_forever
+          </i></button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
