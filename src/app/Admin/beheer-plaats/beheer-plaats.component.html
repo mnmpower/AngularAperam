@@ -1,1 +1,109 @@
-<p>beheer-plaats works!</p>
+
+<h1>Plaatsen beheren</h1>
+    <!-- ---------------------------   -->
+    <!-- TOVOEGEN VAN EEN NIEUW PLAATS -->
+    <!-- ---------------------------   -->
+
+<div *ngIf="popupNewPlaats" class="section">
+    <div class="popup ">
+      <button class="buttonremove" (click)="closePopups()"  ><i class="material-icons">
+        clear
+      </i></button>
+      <h1>Maak een nieuwe plaats aan</h1>
+      <form  (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="naam" *ngIf="plaats.plaatsID == 0">naam: </label>
+          <input type="text" *ngIf="plaats.plaatsID == 0" class="form-control" id="naam"
+                 placeholder="Vul een naam in"
+                 [(ngModel)]="plaats.naam" name="naam" required>
+          <label for="xcord" *ngIf="plaats.plaatsID == 0">x coordinaat: </label>
+          <input type="text" *ngIf="plaats.plaatsID == 0" class="form-control" id="xcord"
+                 placeholder="Vul een x coordinaat in"
+                 [(ngModel)]="plaats.xcord" name="xcord" required>
+          <label for="ycord" *ngIf="plaats.plaatsID == 0">y coordinaat: </label>
+          <input type="text" *ngIf="plaats.plaatsID == 0" class="form-control" id="ycord"
+                 placeholder="Vul een y coordinaat in"
+                 [(ngModel)]="plaats.ycord" name="ycord" required>
+        </div>
+        <br/>
+        <button type="submit" class="btn submitKnop ">Toevoegen</button>
+      </form>
+    </div>
+  </div>
+
+    <!-- ---------------------------   -->
+    <!-- Bewerken VAN EEN NIEUW PLAATS -->
+    <!-- ---------------------------   -->
+
+    
+    <div class="popupBox" *ngIf="popupNewPlaats" class="section">
+        <div class="popup2">
+          <button class="buttonremove" (click)="closePopups()" ><i class="material-icons">
+            clear
+          </i></button>
+          <h1>Bewerken van een naam</h1>
+          <form  (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="naamB" *ngIf="plaats.plaatsID == 0">naam: </label>
+                <input type="text" *ngIf="plaats.plaatsID == 0" class="form-control" id="naamB"
+                    placeholder="Vul een naam in"
+                    [(ngModel)]="plaats.naam" name="naam" required>
+                <label for="xcordB" *ngIf="plaats.plaatsID == 0">x coordinaat: </label>
+                <input type="text" *ngIf="plaats.plaatsID == 0" class="form-control" id="xcordB"
+                    placeholder="Vul een x coordinaat in"
+                    [(ngModel)]="plaats.xcord" name="xcord" required>
+                <label for="ycordB" *ngIf="plaats.plaatsID == 0">y coordinaat: </label>
+                <input type="text" *ngIf="plaats.plaatsID == 0" class="form-control" id="ycordB"
+                    placeholder="Vul een y coordinaat in"
+                    [(ngModel)]="plaats.ycord" name="ycordB" required>
+            </div>
+            <br/>
+            <button type="submit" class="btn btn-primary submitKnop">Updaten</button>
+            <button (click)="closePopups()" class="btn btn-primary submitKnop">Annuleren</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="section">
+        <button class="buttonadd" (click)="OpenNewPlaatsForm()"><i class="material-icons ">
+          add
+        </i></button >
+
+        
+      <!-- ------------------------ -->
+      <!-- OVERZICHT MET ALLE PLAATSEN -->
+      <!-- ------------------------ -->
+  <div style="height: 430px; overflow: auto;">
+    <table  class="table" mat-table>
+      <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">NAAM</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let plaats of Plaatsen">
+        <td scope="row">{{plaats.plaatsID}}</td>
+        <td>{{plaats.naam}}</td>
+        <td>{{plaats.xcord}}</td>
+        <td>{{plaats.ycord}}</td>
+        <td>
+
+          <button type="button" class="" (click)="OpenEditPlaatsForm(plaats.plaatsID)"><i
+            class="material-icons"> create
+          </i></button>
+          <button type="button" class="" (click)="deletePlaatsAlert(plaats)"><i
+            class="material-icons">
+            delete_forever
+          </i></button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+</div>
+</div>
+
+
+
+
