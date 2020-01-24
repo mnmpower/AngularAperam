@@ -1,0 +1,32 @@
+.table {
+  width: 100%;
+
+}
+
+th  {
+  text-align: left;
+
+}
+
+td{
+  border-bottom: 1px solid #ddd;
+}
+button{
+  background-color: #F1B90B;
+  border: none;
+  color: white;
+  padding: 6px 6px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+
+
+input, select  {
+  margin: 5px;
+}
