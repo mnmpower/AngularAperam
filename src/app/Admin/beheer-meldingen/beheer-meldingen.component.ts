@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Type} from '../../Models/type.model';
 import {Router} from '@angular/router';
 import {TypeService} from '../../Services/type.service';
 import {Persoon} from '../../Models/persoon.model';
@@ -7,6 +6,9 @@ import {Plaats} from '../../Models/plaats.model';
 import {Melding} from '../../Models/melding.model';
 import {PersoonService} from '../../Services/persoon.service';
 import {MeldingService} from '../../Services/melding.service';
+import {PlaatsService} from '../../Services/plaats.service';
+import {formatDate, Time} from '@angular/common';
+import DateTimeFormat = Intl.DateTimeFormat;
 
 @Component({
   selector: 'app-beheer-meldingen',
@@ -25,16 +27,25 @@ export class BeheerMeldingenComponent implements OnInit {
     private router: Router,
     private typeService: TypeService,
     private persoonService: PersoonService,
+    private plaatsService: PlaatsService,
     private meldingSerivce: MeldingService
   ) {
     this.ReadMeldingen();
     this.ReadPersonen();
+    this.ReadMPlaatsen();
   }
 
   private ReadMeldingen() {
     this.meldingSerivce.getMeldingen().subscribe(r => {
       this.meldingen = r;
       console.log(this.meldingen);
+    });
+  }
+
+  private ReadMPlaatsen() {
+    this.plaatsService.getPlaatsen().subscribe(r => {
+      this.plaatsen = r;
+      console.log(this.plaatsen);
     });
   }
 
