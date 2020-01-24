@@ -21,9 +21,6 @@ export class BeheerPersoonComponent implements OnInit {
   persoon: Persoon = new Persoon();
   popupNewPersoon = false;
 
-  // popupEditPersoon: boolean = false;
-
-
   constructor(
     private router: Router,
     private persoonService: PersoonService,
@@ -49,7 +46,6 @@ export class BeheerPersoonComponent implements OnInit {
 
   closePopups() {
     this.popupNewPersoon = false;
-    // this.popupEditPersoon = false;
   }
 
   ngOnInit() {
@@ -64,7 +60,6 @@ export class BeheerPersoonComponent implements OnInit {
     this.persoon.typeID = 0;
     this.popupNewPersoon = true;
     this.invalideForm = false;
-    // this.popupEditPersoon = false;
   }
 
 
@@ -73,7 +68,6 @@ export class BeheerPersoonComponent implements OnInit {
     this.persoonService.getPersoonByID(persoonID).subscribe(r => {
       this.persoon = r;
       console.log('type: ', this.persoon);
-      // this.popupEditPersoon = true;
       this.popupNewPersoon = true;
       this.invalideForm = false;
     });
@@ -113,7 +107,6 @@ export class BeheerPersoonComponent implements OnInit {
 
   deletePersoon(persoonID: number) {
     this.persoonService.deletePersoon(persoonID).subscribe(result => {
-      // this.popupEditPersoon = false;
       this.ReadPersonen();
     });
   }

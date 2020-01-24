@@ -7,8 +7,6 @@ import {Melding} from '../../Models/melding.model';
 import {PersoonService} from '../../Services/persoon.service';
 import {MeldingService} from '../../Services/melding.service';
 import {PlaatsService} from '../../Services/plaats.service';
-import {formatDate, Time} from '@angular/common';
-import DateTimeFormat = Intl.DateTimeFormat;
 
 @Component({
   selector: 'app-beheer-meldingen',
@@ -21,7 +19,7 @@ export class BeheerMeldingenComponent implements OnInit {
   plaatsen: Plaats[];
   meldingen: Melding[];
   melding: Melding = new Melding();
-  newOrEdit: boolean = false;
+  newOrEdit = false;
 
   constructor(
     private router: Router,
@@ -65,8 +63,8 @@ export class BeheerMeldingenComponent implements OnInit {
 
   OpenNewMeldingForm() {
     this.melding.meldingID = 0;
-    this.melding.plaatsID = null;
-    this.melding.persoonID = null;
+    this.melding.plaatsID = 0;
+    this.melding.persoonID = 0;
     this.melding.tijdstip = null;
     this.newOrEdit = true;
   }

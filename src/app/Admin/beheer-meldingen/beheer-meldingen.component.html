@@ -7,12 +7,12 @@
     <button class="buttonremove" (click)="closePopup()"><i class="material-icons">
       clear
     </i></button>
-    <h1 *ngIf="melding.meldingID == 0">Maak een nieuw melding aan</h1>
+    <h1 *ngIf="melding.meldingID == 0">Maak een nieuwe melding aan</h1>
     <h1 *ngIf="melding.meldingID != 0">Bewerken van een melding</h1>
     <form (ngSubmit)="onSubmit()">
       <div class="form-group mt-5">
         <label for="persoon">Persoon </label>
-        <select name="persoon" id="persoon" [(ngModel)]="melding.persoonID">
+        <select name="persoon" id="persoon"  [(ngModel)]="melding.persoonID">
           <option value="0" selected >--- selecteer een persoon ---</option>
           <option *ngFor="let persoon of personen" value="{{persoon.persoonID}}">{{persoon.naam}} {{persoon.voornaam}}</option>
 
