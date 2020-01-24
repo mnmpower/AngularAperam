@@ -13,7 +13,8 @@
       <div class="form-group mt-5">
         <label for="persoon">Persoon </label>
         <select name="persoon" id="persoon" [(ngModel)]="melding.persoonID">
-          <option value="0" selected >--- selecteer een persoon ---</option>
+
+          <option value="0"  disabled selected  >--- selecteer een persoon ---</option>
           <option *ngFor="let persoon of personen" value="{{persoon.persoonID}}">{{persoon.naam}} {{persoon.voornaam}}</option>
 
         </select>
@@ -21,7 +22,7 @@
       <div class="form-group ">
         <label for="plaats">Plaats </label>
         <select name="plaats" id="plaats" [(ngModel)]="melding.plaatsID">
-          <option value="0" selected>--- selecteer een plaats ---</option>
+          <option value="0" disabled selected>--- selecteer een plaats ---</option>
           <option *ngFor="let plaats of plaatsen" value="{{plaats.plaatsID}}">{{plaats.naam}}</option>
 
         </select>
@@ -76,7 +77,6 @@
     </table>
   </div>
 </div>
-
 
 
 

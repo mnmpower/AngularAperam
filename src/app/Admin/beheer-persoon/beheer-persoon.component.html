@@ -33,7 +33,7 @@
         <label for="type">Type: </label>
 
         <select name="type" id="type" [(ngModel)]="persoon.typeID">
-          <option value="0" selected>--- selecteer een type ---</option>
+          <option value="0" disabled selected>--- selecteer een type ---</option>
           <option *ngFor="let type of types" value="{{type.typeID}}">{{type.functie}}</option>
 
         </select>
