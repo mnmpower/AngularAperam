@@ -11,7 +11,6 @@ import {FormsModule} from '@angular/forms';
 import {MatInputModule, MatSortModule, MatTableModule} from '@angular/material';
 import {MatPaginatorModule } from '@angular/material';
 
-
 @NgModule({
   declarations: [
     BeheerMeldingenComponent,
