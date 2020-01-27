@@ -1,1 +1,12 @@
-<p>Live-chart works!</p>
+
+<div *ngIf="show" id="canvas" class="centered"></div>
+<p >Live-chart works!</p>
+
+
+
+<button (click)="toggle()">show simulation</button>
+<button onclick="(move())">move</button>
+<button onclick="(hide())">hide</button>
+
+
+
