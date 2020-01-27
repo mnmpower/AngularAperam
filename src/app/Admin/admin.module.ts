@@ -9,6 +9,7 @@ import {BeheerTypeComponent} from './beheer-type/beheer-type.component';
 import {GrafiekenComponent} from './grafieken/grafieken.component';
 import {FormsModule} from '@angular/forms';
 import {MatInputModule, MatSortModule, MatTableModule} from '@angular/material';
+import {MatPaginatorModule } from '@angular/material';
 
 
 @NgModule({
@@ -25,11 +26,13 @@ import {MatInputModule, MatSortModule, MatTableModule} from '@angular/material';
     CommonModule,
     FormsModule,
     MatSortModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule
   ],
   exports: [
     LiveChartComponent,
-    MatSortModule
+    MatSortModule,
+    MatPaginatorModule
   ]
 })
 export class AdminModule {
