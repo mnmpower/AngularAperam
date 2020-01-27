@@ -4,6 +4,7 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {MeldingenComponent} from './meldingen/meldingen.component';
 import {MeldingService} from '../Services/melding.service';
 import {MatFormFieldModule, MatInputModule, MatTableModule} from '@angular/material';
+import { MatSortModule } from '@angular/material';
 
 
 @NgModule({
@@ -13,13 +14,15 @@ import {MatFormFieldModule, MatInputModule, MatTableModule} from '@angular/mater
   ],
   exports: [
     DashboardComponent,
+    MatSortModule
   ],
   imports: [
     CommonModule,
     MatFormFieldModule,
     MatTableModule,
     MatInputModule,
-    MatInputModule
+    MatInputModule,
+    MatSortModule
   ],
   providers: [
     MeldingService
