@@ -7,7 +7,7 @@ export class VariablesService {
   constructor() {
   }
   getAPIBase_URL(): string {
-    return 'https://localhost:44356/api/';
+    return 'http://localhost:51665/api/';
   }
 }
 

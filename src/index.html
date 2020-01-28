@@ -13,18 +13,25 @@
 
 </head>
 <script>
+  function ShowArea() {
+    setTimeout(
+      function () {
+        myGameArea.start();
+      }, 100);
+
+  }
+
   function move() {
     myGameArea.start();
     myGamePiece = new component(50, 50, "red", 50, 0, 120, 90);
     setTimeout(
       function () {
         myGamePiece = new component(50, 50, "red", 120, 90, 300, 60);
-      }, 800);
-
-
+      }, 1000);
+    // hier voort aanvullen voor een juist patroon
   }
 
-  function hide() {
+  function HideArea() {
     myGameArea.stop();
   }
 
@@ -32,9 +39,10 @@
     // canvas: document.getElementById("canvas"),
     canvas: document.createElement("canvas"),
     start: function () {
-      this.canvas.width = 480;
-      this.canvas.height = 270;
+      this.canvas.width = 904;
+      this.canvas.height = 599;
       this.context = this.canvas.getContext("2d");
+      console.log(document.getElementById("canvas"));
       document.body.insertBefore(this.canvas, document.getElementById("canvas").childNodes[0]);
       this.interval = setInterval(updateGameArea, 20);
     },
@@ -43,7 +51,7 @@
     },
     stop: function () {
       this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-      myGamePiece= null;
+      // myGamePiece= null;
       this.canvas.remove();
 
     }
@@ -54,7 +62,7 @@
   function component(width, height, color, x, y, newX, newY) {
     this.width = width;
     this.height = height;
-    this.speed = -1;
+    this.speed = 1;
     this.x = x;
     this.y = y;
     this.newX = newX;
@@ -68,19 +76,19 @@
       ctx.restore();
     }
     this.newPos = function () {
-      if (this.x < this.newX) {
+      if (this.x > this.newX) {
         this.x -= this.speed;
-      } else if (this.x > this.newX) {
+      } else if (this.x < this.newX) {
         this.x += this.speed;
       }
 
 
-      if (this.y < this.newY) {
+      if (this.y > this.newY) {
         this.y -= this.speed;
-      } else if (this.y > this.newY) {
+      } else if (this.y < this.newY) {
         this.y += this.speed;
       }
-      console.log(this.x, this.newX, this.y, this.newY)
+      console.log(this.x, this.newX, this.y, this.newY, this.speed)
     }
   }
 
@@ -94,18 +102,16 @@
 
 
 <body>
-<!--<canvas width="480" height="270" id="canvas"></canvas>-->
 
 <style>
   canvas {
-    border: 1px solid #d3d3d3;
-    background-color: #f1f1f1;
-    margin-top: -500px;
-    margin-left: 300px;
+    background-image: url("assets/Images/plattegrond_voorbeeld.png") ;
+    background-repeat: no-repeat;
+    margin-top: -800px;
+    margin-left: 500px;
     left: 0px;
     z-index: 1;
     position: absolute;
-
   }
 </style>
 
