@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {DashboarduserService} from '../../Services/dashboarduser.service';
 import {Tabel} from '../../Models/tabel.model';
+import {MatSort} from '@angular/material';
 
 export interface PeriodicElement {
   name: string;
@@ -21,6 +22,9 @@ export class DashboardComponent implements OnInit {
   dataSource;
   tabelen: Tabel[] = [];
 
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
+  // @ViewChild(MatSort) sort: MatSort;
+
   constructor(
     private dashboarduserService: DashboarduserService
   ) {
@@ -28,6 +32,7 @@ export class DashboardComponent implements OnInit {
       this.tabelen = r.tabellen;
       console.log(r);
       this.dataSource = new MatTableDataSource(this.tabelen);
+      this.dataSource.sort = this.sort;
     });
   }
 
