@@ -10,6 +10,8 @@ import {GrafiekenComponent} from './grafieken/grafieken.component';
 import {FormsModule} from '@angular/forms';
 import {MatInputModule, MatSortModule, MatTableModule} from '@angular/material';
 import {MatPaginatorModule } from '@angular/material';
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import {MatPaginatorModule } from '@angular/material';
     FormsModule,
     MatSortModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    BrowserModule,
+    BrowserAnimationsModule
   ],
   exports: [
     LiveChartComponent,

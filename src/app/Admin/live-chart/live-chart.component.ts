@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {trigger, state, style, animate, transition} from '@angular/animations';
 
 
 @Component({
@@ -6,11 +7,15 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './live-chart.component.html',
   styleUrls: ['./live-chart.component.scss']
 })
+
 export class LiveChartComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   
   }
+
+
 }
