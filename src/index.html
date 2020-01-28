@@ -13,6 +13,7 @@
 
 </head>
 <script>
+
   function ShowArea() {
     setTimeout(
       function () {
@@ -23,14 +24,28 @@
 
   function move() {
     myGameArea.start();
-    myGamePiece = new component(50, 50, "red", 50, 0, 120, 90);
+    myGamePiece = new component(50, 50, "red", 170, 600, 170, 260);
     setTimeout(
       function () {
-        myGamePiece = new component(50, 50, "red", 120, 90, 300, 60);
-      }, 1000);
-    // hier voort aanvullen voor een juist patroon
-  }
+        myGamePiece = new component(50, 50, "red", 170, 260, 320, 200);
+        setTimeout(
+          function () {
+            myGamePiece = new component(50, 50, "red", 320, 200, 400, 150);
+            setTimeout(
+              function () {
+                myGamePiece = new component(50, 50, "red", 400, 150, 400, 350);
+                setTimeout(
+                  function () {
+                    myGamePiece = new component(50, 50, "red", 400, 350, 230, 700);
 
+                  }, 2500);
+              }, 2000);
+          }, 2000);
+      }, 4000);
+    // hier voort aanvullen voor een juist patroon
+
+
+  }
 
 
   function HideArea() {
@@ -90,7 +105,7 @@
       } else if (this.y < this.newY) {
         this.y += this.speed;
       }
-      console.log(this.x, this.newX, this.y, this.newY, this.speed)
+      // console.log(this.x, this.newX, this.y, this.newY, this.speed)
     }
   }
 
@@ -107,7 +122,7 @@
 
 <style>
   canvas {
-    background-image: url("assets/Images/plattegrond_voorbeeld.png") ;
+    background-image: url("assets/Images/plattegrond_voorbeeld.png");
     background-repeat: no-repeat;
     /*margin-top: -800px;*/
     margin-left: 30vw;
