@@ -6,11 +6,12 @@
 </div>
 
 
-<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 section">
+<table mat-table [dataSource]="dataSource" matSort class="section">
+
 
   <!-- Position Column -->
   <ng-container matColumnDef="TagNummer">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header="tagnummer"> Tagnummer </th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header="tagnummer">Tagnummer </th>
     <td mat-cell *matCellDef="let element"> {{element.tagnummer}} </td>
   </ng-container>
 
