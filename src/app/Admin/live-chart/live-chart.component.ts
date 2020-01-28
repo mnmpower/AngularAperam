@@ -2,6 +2,8 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {trigger, state, style, animate, transition} from '@angular/animations';
 import {MeldingService} from '../../Services/melding.service';
 import {Melding} from '../../Models/melding.model';
+import {PersoonService} from '../../Services/persoon.service';
+import {Persoon} from '../../Models/persoon.model';
 
 
 @Component({
@@ -13,14 +15,21 @@ import {Melding} from '../../Models/melding.model';
 export class LiveChartComponent implements OnInit {
 
   melding: Melding = new Melding();
+  personen: Persoon[] = [];
+  randomID: number;
 
   constructor(
-    private meldingService: MeldingService
+    private meldingService: MeldingService,
+    private persoonService: PersoonService
   ) {
   }
 
   ngOnInit() {
 
+    this.persoonService.getPersonen().subscribe(r => {
+      this.personen = r;
+      }
+    )
   }
 
   delay(ms: number) {
@@ -29,7 +38,8 @@ export class LiveChartComponent implements OnInit {
 
 
   AddMelding() {
-    this.melding.persoonID = 1;
+    this.randomID = Math.floor((Math.random() * this.personen.length) + 1);
+    this.melding.persoonID = this.randomID;
     this.melding.plaatsID = 2;
     (async () => {
       // Do something before delay
