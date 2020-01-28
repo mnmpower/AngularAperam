@@ -11,7 +11,7 @@
     <h1 *ngIf="melding.meldingID != 0">Bewerken van een melding</h1>
     <form (ngSubmit)="onSubmit()">
       <div class="form-group mt-5">
-        <label for="persoon">Persoon </label>
+        <label for="persoon">Persoon: </label>
         <select name="persoon" id="persoon" [(ngModel)]="melding.persoonID">
 
           <option value="0"  disabled selected  >--- selecteer een persoon ---</option>
@@ -20,7 +20,7 @@
         </select>
       </div>
       <div class="form-group ">
-        <label for="plaats">Plaats </label>
+        <label for="plaats">Plaats: </label>
         <select name="plaats" id="plaats" [(ngModel)]="melding.plaatsID">
           <option value="0" disabled selected>--- selecteer een plaats ---</option>
           <option *ngFor="let plaats of plaatsen" value="{{plaats.plaatsID}}">{{plaats.naam}}</option>
@@ -58,8 +58,8 @@
       <tbody>
       <tr *ngFor="let melding of meldingen">
         <td scope="row">{{melding.meldingID}}</td>
-        <td>{{melding.persoon.voornaam}}</td>
         <td>{{melding.persoon.naam}}</td>
+        <td>{{melding.persoon.voornaam}}</td>
         <td>{{melding.tijdstip| date:'medium' }}</td>
         <td>{{melding.plaats.naam}}</td>
         <td>

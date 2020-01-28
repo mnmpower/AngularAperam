@@ -12,18 +12,18 @@
     <h1 *ngIf="plaats.plaatsID != 0">Bewerken van een plaats</h1>
     <form (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <label for="naam">naam: </label>
+        <label for="naam">Naam: </label>
         <input type="text" class="form-control" id="naam"
                placeholder="Vul een naam in"
                [(ngModel)]="plaats.naam" name="naam" required>
       </div>
       <div class="form-group">
-        <label for="xcord" >x coordinaat: </label>
+        <label for="xcord" >X Coördinaat: </label>
         <input type="number"  class="form-control" id="xcord"
                placeholder="Vul een x coordinaat in"
                [(ngModel)]="plaats.xcord" name="xcord" required></div>
       <div class="form-group">
-        <label for="ycord" >y coordinaat: </label>
+        <label for="ycord" >Y Coördinaat: </label>
         <input type="number" class="form-control" id="ycord"
                placeholder="Vul een y coordinaat in"
                [(ngModel)]="plaats.ycord" name="ycord" required>
@@ -51,7 +51,7 @@
       <thead>
       <tr>
         <th scope="col">ID</th>
-        <th scope="col">NAAM</th>
+        <th scope="col">Naam</th>
         <th>X-coördinaten</th>
         <th>Y-coördinaten</th>
       </tr>

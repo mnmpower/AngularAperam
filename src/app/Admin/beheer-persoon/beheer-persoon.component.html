@@ -11,19 +11,19 @@
     <h1 *ngIf="persoon.persoonID != 0">Bewerken van een type</h1>
     <form (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <label for="voornaam">Voornaam </label>
+        <label for="voornaam">Voornaam: </label>
         <input type="text" class="form-control" id="voornaam"
                placeholder="Vul een voornaam in"
                [(ngModel)]="persoon.voornaam" name="voornaam" required>
       </div>
       <div class="form-group mt-1" >
-        <label for="naam">Naam </label>
+        <label for="naam">Naam: </label>
         <input type="text" class="form-control" id="naam"
                placeholder="Vul een naam in"
                [(ngModel)]="persoon.naam" name="naam" required>
       </div>
       <div class="form-group mt-1">
-        <label for="usernaam">Usernaam </label>
+        <label for="usernaam">Usernaam: </label>
         <input type="text" class="form-control" id="usernaam"
                placeholder="Vul een usernaam in"
                [(ngModel)]="persoon.usernaam" name="naam" required>
@@ -39,13 +39,13 @@
         </select>
       </div>
       <div class="form-group">
-        <label for="wachtwoord1">Wachtwoord </label>
+        <label for="wachtwoord1">Wachtwoord: </label>
         <input type="password" class="form-control" id="wachtwoord1"
                placeholder="Vul een wachtwoord in"
                [(ngModel)]="persoon.wachtwoord" name="wachtwoord1" required>
       </div>
       <div class="form-group mt-1">
-        <label for="wachtwoord2">bevestig wachtwoord </label>
+        <label for="wachtwoord2">Bevestig wachtwoord: </label>
         <input type="password" class="form-control" id="wachtwoord2"
                placeholder="Herhaal uw wachtwoord"
                [(ngModel)]="wachtwoordHerhaling" name="wachtwoord2" required>
@@ -76,8 +76,8 @@
       <thead>
       <tr>
         <th scope="col">ID</th>
-        <th scope="col">Voornaam</th>
         <th scope="col">Naam</th>
+        <th scope="col">Voornaam</th>
         <th scope="col">Usernaam</th>
         <th scope="col">Type</th>
         <th></th>
@@ -86,8 +86,8 @@
       <tbody>
       <tr *ngFor="let persoon of personen">
         <td scope="row">{{persoon.persoonID}}</td>
-        <td>{{persoon.voornaam}}</td>
         <td>{{persoon.naam}}</td>
+        <td>{{persoon.voornaam}}</td>
         <td>{{persoon.usernaam}}</td>
         <td>{{persoon.type.functie}}</td>
         <td>
