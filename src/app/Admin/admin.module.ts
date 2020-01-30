@@ -12,6 +12,7 @@ import {MatInputModule, MatSortModule, MatTableModule} from '@angular/material';
 import {MatPaginatorModule } from '@angular/material';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ChartsModule} from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     BeheerTypeComponent,
     DashboardAdminComponent,
     GrafiekenComponent,
-    LiveChartComponent
+    LiveChartComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -30,7 +32,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatTableModule,
     MatPaginatorModule,
     BrowserModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ChartsModule
   ],
   exports: [
     LiveChartComponent,

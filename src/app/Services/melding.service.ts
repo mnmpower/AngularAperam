@@ -44,4 +44,9 @@ export class MeldingService {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
       });
   }
+
+  getCountEachMonth(year: string){
+    return this.http.get<any>(this.Base_URL+ 'melding/countEachMonth?year=' + year);
+
+  }
 }
