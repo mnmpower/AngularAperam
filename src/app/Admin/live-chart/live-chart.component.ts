@@ -1,12 +1,34 @@
-import {Component, Inject, NgZone, OnDestroy, OnInit} from '@angular/core';
-import {trigger, state, style, animate, transition} from '@angular/animations';
+import {Component, Input, NgZone, OnInit} from '@angular/core';
 import {MeldingService} from '../../Services/melding.service';
 import {Melding} from '../../Models/melding.model';
 import {PersoonService} from '../../Services/persoon.service';
 import {Persoon} from '../../Models/persoon.model';
-import {Router} from '@angular/router';
-import {MatDialogConfig, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+
+
+@Component({
+  selector: 'ngbd-modal-content',
+  template: `
+    <div class="modal-header">
+      <h4 class="modal-title">Nieuwe overtreding</h4>
+      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Er is een nieuwe overtreding van {{persoon.naam}}, {{persoon.voornaam}}!</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+    </div>
+  `
+})
+export class NgbdModalContent {
+  @Input() name;
+
+  constructor(public activeModal: NgbActiveModal) {
+  }
+}
 
 
 @Component({
@@ -17,37 +39,28 @@ import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 export class LiveChartComponent implements OnInit {
 
-  public chartType: string = 'bar';
-
-  public chartDatasets: Array<any> = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'My First dataset' }
-  ];
-
   melding: Melding = new Melding();
   personen: Persoon[] = [];
   randomID: number;
+  persoon: Persoon = new Persoon();
+
 
   constructor(
     private meldingService: MeldingService,
     private persoonService: PersoonService,
-    private dialog: MatDialog,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private modalService: NgbModal
   ) {
 
   }
 
   ngOnInit() {
-    window['angularComponentReferenceo'] = {component: this, zone: this.ngZone, loadAngularFunctionOpen: () => this.AddMelding(),};
-    window['angularComponentReferencec'] = {component: this, zone: this.ngZone, loadAngularFunctionClose: () => this.closeDialog(),};
+    window['angularComponentReferenceo'] = {component: this, zone: this.ngZone, loadAngularFunctionOpen: () => this.AddMelding()};
 
     this.persoonService.getPersonen().subscribe(r => {
         this.personen = r;
       }
     );
-  }
-
-  delay(ms: number) {
-    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
   SetMeldingEmpty() {
@@ -64,67 +77,22 @@ export class LiveChartComponent implements OnInit {
     this.randomID = Math.floor((Math.random() * this.personen.length) + 1);
     this.melding.persoonID = this.randomID;
     this.melding.plaatsID = 2;
-
-    this.openDialog();
+    this.persoonService.getPersoonByID(this.randomID).subscribe(r => {
+      this.persoon = r;
+      this.openDialog();
+    });
 
     this.meldingService.addMelding(this.melding).subscribe(r => {
       this.meldingService.getMeldingByID(r.meldingID).subscribe(re => {
         this.melding = re;
         console.log(re);
-        this.nieuweMeldingMessage(this.melding);
       });
     });
   }
 
   public openDialog() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false;
-    dialogConfig.autoFocus = true;
-    this.dialog.open(LiveChartComponent, dialogConfig);
+    const modalRef = this.modalService.open(NgbdModalContent);
+    modalRef.componentInstance.persoon = this.persoon;
   }
 
-  public closeDialog() {
-    this.dialog.closeAll();
-  }
-
-  close() {
-    this.dialog.closeAll();
-  }
-
-  nieuweMeldingMessage(melding: Melding) {
-
-    // alert('Er is een nieuwe melding van ' + melding.persoon.naam + ', ' + melding.persoon.voornaam + '!!!');
-
-  }
-
-  
-  public chartLabels: Array<any> = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'];
-
-  public chartColors: Array<any> = [
-    {
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)'
-      ],
-      borderColor: [
-        'rgba(255,99,132,1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)'
-      ],
-      borderWidth: 2,
-    }
-  ];
-
-  public chartOptions: any = {
-    responsive: true
-  };
-  public chartClicked(e: any): void { }
-  public chartHovered(e: any): void { }
 }

@@ -29,6 +29,11 @@
   }
 
   function move() {
+    document.getElementById('StartSimulation').disabled = true;
+    setTimeout(
+      function () {
+        document.getElementById('StartSimulation').disabled = false;
+      }, 14000);
     myGameArea.start();
     myGamePiece = new component(50, 50, "red", 170, 600,1, 170, 260);
     setTimeout(
@@ -43,7 +48,6 @@
                 setTimeout(
                   function () {
                     myGamePiece = new component(50, 50, "red", 400, 350,1, 230, 700);
-
                   }, 2500);
               }, 2000);
           }, 2000);
@@ -77,9 +81,6 @@
       // myGamePiece= null;
       this.canvas.remove();
 
-    },
-    stopMoving : function() {
-      clearInterval(this.interval);
     }
   }
 
@@ -143,9 +144,6 @@
     window.angularComponentReferenceo.zone.run(() => { window.angularComponentReferenceo.loadAngularFunctionOpen(); });
   }
 
-  function CloseDialogAngular(){
-    window.angularComponentReferencec.zone.run(() => { window.angularComponentReferencec.loadAngularFunctionClose(); });
-  }
 
   function updateGameArea() {
 
@@ -164,7 +162,7 @@
     }
     myGameArea.clear();
     myGamePiece.newPos();
-    if (myObstacle.x < 300 || myObstacle.x > 850){
+    if (myObstacle.x < 330 || myObstacle.x > 850){
       KraanNaarLinks = !KraanNaarLinks;
     }
     if (KraanNaarLinks){
