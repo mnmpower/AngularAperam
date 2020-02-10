@@ -12,9 +12,15 @@
 
 
 </head>
+<script
+  src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
 <script>
 
+
+
+
   function ShowArea() {
+    myObstacle = new component(30, 200, "blue", 850, 140, 0.5);
     setTimeout(
       function () {
         myGameArea.start();
@@ -24,19 +30,19 @@
 
   function move() {
     myGameArea.start();
-    myGamePiece = new component(50, 50, "red", 170, 600, 170, 260);
+    myGamePiece = new component(50, 50, "red", 170, 600,1, 170, 260);
     setTimeout(
       function () {
-        myGamePiece = new component(50, 50, "red", 170, 260, 320, 200);
+        myGamePiece = new component(50, 50, "red", 170, 260,1, 320, 200);
         setTimeout(
           function () {
-            myGamePiece = new component(50, 50, "red", 320, 200, 400, 150);
+            myGamePiece = new component(50, 50, "red", 320, 200,1, 400, 150);
             setTimeout(
               function () {
-                myGamePiece = new component(50, 50, "red", 400, 150, 400, 350);
+                myGamePiece = new component(50, 50, "red", 400, 150,1, 400, 350);
                 setTimeout(
                   function () {
-                    myGamePiece = new component(50, 50, "red", 400, 350, 230, 700);
+                    myGamePiece = new component(50, 50, "red", 400, 350,1, 230, 700);
 
                   }, 2500);
               }, 2000);
@@ -71,15 +77,21 @@
       // myGamePiece= null;
       this.canvas.remove();
 
+    },
+    stopMoving : function() {
+      clearInterval(this.interval);
     }
   }
 
   var myGamePiece;
+  var myObstacle;
+  var KraanNaarLinks = true;
+  var messageOpen = false;
 
-  function component(width, height, color, x, y, newX, newY) {
+  function component(width, height, color, x, y, speed, newX, newY) {
     this.width = width;
     this.height = height;
-    this.speed = 1;
+    this.speed = speed;
     this.x = x;
     this.y = y;
     this.newX = newX;
@@ -107,17 +119,69 @@
       }
       // console.log(this.x, this.newX, this.y, this.newY, this.speed)
     }
+    this.crashWith = function(otherobj) {
+      var myleft = this.x;
+      var myright = this.x + (this.width);
+      var mytop = this.y;
+      var mybottom = this.y + (this.height);
+      var otherleft = otherobj.x;
+      var otherright = otherobj.x + (otherobj.width);
+      var othertop = otherobj.y;
+      var otherbottom = otherobj.y + (otherobj.height);
+      var crash = true;
+      if ((mybottom < othertop) ||
+        (mytop > otherbottom) ||
+        (myright < otherleft) ||
+        (myleft > otherright)) {
+        crash = false;
+      }
+      return crash;
+    }
+  }
+
+  function openDialogAngular(){
+    window.angularComponentReferenceo.zone.run(() => { window.angularComponentReferenceo.loadAngularFunctionOpen(); });
+  }
+
+  function CloseDialogAngular(){
+    window.angularComponentReferencec.zone.run(() => { window.angularComponentReferencec.loadAngularFunctionClose(); });
   }
 
   function updateGameArea() {
+
+
+    if (myGamePiece.crashWith(myObstacle)) {
+      if (!messageOpen){
+        openDialogAngular();
+        messageOpen = true;
+        setTimeout(
+          function () {
+            messageOpen = false;
+            CloseDialogAngular()
+          }, 10000);
+
+      }
+    }
     myGameArea.clear();
     myGamePiece.newPos();
+    if (myObstacle.x < 300 || myObstacle.x > 850){
+      KraanNaarLinks = !KraanNaarLinks;
+    }
+    if (KraanNaarLinks){
+      myObstacle.x += -myObstacle.speed;
+    } else {
+      myObstacle.x -= -myObstacle.speed;
+    }
+
+    myObstacle.update();
     myGamePiece.update();
-  }
+
+}
 
 </script>
 
-<body>
+
+<body id="idForJS">
 
 <style>
   canvas {

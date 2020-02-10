@@ -1,9 +1,12 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Inject, NgZone, OnDestroy, OnInit} from '@angular/core';
 import {trigger, state, style, animate, transition} from '@angular/animations';
 import {MeldingService} from '../../Services/melding.service';
 import {Melding} from '../../Models/melding.model';
 import {PersoonService} from '../../Services/persoon.service';
 import {Persoon} from '../../Models/persoon.model';
+import {Router} from '@angular/router';
+import {MatDialogConfig, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 
 @Component({
@@ -26,41 +29,71 @@ export class LiveChartComponent implements OnInit {
 
   constructor(
     private meldingService: MeldingService,
-    private persoonService: PersoonService
+    private persoonService: PersoonService,
+    private dialog: MatDialog,
+    private ngZone: NgZone
   ) {
+
   }
 
   ngOnInit() {
+    window['angularComponentReferenceo'] = {component: this, zone: this.ngZone, loadAngularFunctionOpen: () => this.AddMelding(),};
+    window['angularComponentReferencec'] = {component: this, zone: this.ngZone, loadAngularFunctionClose: () => this.closeDialog(),};
 
     this.persoonService.getPersonen().subscribe(r => {
-      this.personen = r;
+        this.personen = r;
       }
-    )
+    );
   }
 
   delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
+  SetMeldingEmpty() {
+    this.melding.meldingID = 0;
+    this.melding.plaatsID = 0;
+    this.melding.persoonID = 0;
+    this.melding.tijdstip = null;
+    this.melding.plaats = null;
+    this.melding.persoon = null;
+  }
 
   AddMelding() {
+    this.SetMeldingEmpty();
     this.randomID = Math.floor((Math.random() * this.personen.length) + 1);
     this.melding.persoonID = this.randomID;
     this.melding.plaatsID = 2;
-    (async () => {
-      // Do something before delay
-      console.log('before delay');
 
-      await this.delay(5300);
+    this.openDialog();
 
-      // Do something after
-      console.log('after delay');
-      this.meldingService.addMelding(this.melding).subscribe(r => {
-        console.log(r);
+    this.meldingService.addMelding(this.melding).subscribe(r => {
+      this.meldingService.getMeldingByID(r.meldingID).subscribe(re => {
+        this.melding = re;
+        console.log(re);
+        this.nieuweMeldingMessage(this.melding);
       });
+    });
+  }
 
-    })();
+  public openDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    this.dialog.open(LiveChartComponent, dialogConfig);
+  }
 
+  public closeDialog() {
+    this.dialog.closeAll();
+  }
+
+  close() {
+    this.dialog.closeAll();
+  }
+
+  nieuweMeldingMessage(melding: Melding) {
+
+    // alert('Er is een nieuwe melding van ' + melding.persoon.naam + ', ' + melding.persoon.voornaam + '!!!');
 
   }
 

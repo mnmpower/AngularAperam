@@ -8,8 +8,8 @@ import {BeheerPersoonComponent} from './beheer-persoon/beheer-persoon.component'
 import {BeheerTypeComponent} from './beheer-type/beheer-type.component';
 import {GrafiekenComponent} from './grafieken/grafieken.component';
 import {FormsModule} from '@angular/forms';
-import {MatInputModule, MatSortModule, MatTableModule} from '@angular/material';
-import {MatPaginatorModule } from '@angular/material';
+import {MatDialogModule, MatInputModule, MatSortModule, MatTableModule} from '@angular/material';
+import {MatPaginatorModule} from '@angular/material';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ChartsModule} from 'ng2-charts';
@@ -33,6 +33,7 @@ import {ChartsModule} from 'ng2-charts';
     MatPaginatorModule,
     BrowserModule,
     BrowserAnimationsModule,
+    MatDialogModule
     ChartsModule
   ],
   exports: [

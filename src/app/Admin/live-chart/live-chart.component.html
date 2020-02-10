@@ -3,20 +3,17 @@
     Sorry, your browser does not support inline SVG.
 </svg>  -->
 
-<div  id="canvas" class="centered" ></div>
+<div id="canvas" class="centered"></div>
 
-<button id="StartSimulation" onclick="(move())" (click)="AddMelding()">Start simulation</button>
+<button id="StartSimulation" onclick="(move())" >Start simulation</button>
 
-<!-- 
-<div style="display: block">
-<canvas mdbChart
-  [chartType]="chartType"
-  [datasets]="chartDatasets"
-  [labels]="chartLabels"
-  [colors]="chartColors"
-  [options]="chartOptions"
-  [legend]="true"
-  (chartHover)="chartHovered($event)"
-  (chartClick)="chartClicked($event)">
-</canvas>
-</div> -->
+
+<h1 mat-dialog-title>Nieuwe melding!</h1>
+
+<mat-dialog-content>
+  {{this.melding.persoonID}} hier  de bodytekst
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button class="mat-raised-button" (click)="close()">Close</button>
+</mat-dialog-actions>
