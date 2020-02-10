@@ -1,7 +1,7 @@
 
 <div>
-    <div>
-      <div>
+    <div >
+      <div class="section">
         <canvas baseChart
           [datasets]="barChartData"
           [labels]="barChartLabels"
@@ -9,7 +9,7 @@
           [plugins]="barChartPlugins"
           [legend]="barChartLegend"
           [chartType]="barChartType">
-        </canvas>
+        </canvas >
       </div>
       <button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button>
     </div>
