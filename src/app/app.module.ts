@@ -11,12 +11,19 @@ import {NavbarComponent} from "./navbar/navbar.component";
 import {CommonModule} from "@angular/common";
 import {AdminModule} from "./Admin/admin.module";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {SecurityInterceptor} from './security/security.interceptor';
+import {NeedAuthGuard} from './security/need-auth-guard';
+import {PersoonService} from './Services/persoon.service';
+import {ForbiddenComponent} from './forbidden/forbidden.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {BrowserModule} from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NavbarComponent,
+    ForbiddenComponent
   ],
   imports: [
     UserModule,
@@ -27,7 +34,22 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
     CommonModule,
     AdminModule,
     HttpClientModule,
+    FormsModule,
+    BrowserModule,
+    ReactiveFormsModule
   ],
+  exports: [
+    FormsModule
+  ],
+  providers: [{
+  provide: HTTP_INTERCEPTORS,
+  useClass: SecurityInterceptor,
+  multi: true,
+},
+  NeedAuthGuard,
+  PersoonService,
+  NavbarComponent
+],
   bootstrap: [AppComponent],
   schemas: []
 })

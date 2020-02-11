@@ -15,6 +15,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ChartsModule} from 'ng2-charts';
 import {MatFormFieldModule, MatButtonModule} from '@angular/material';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     ChartsModule,
     MatFormFieldModule,
     MatButtonModule,
-    NgbModule
+    NgbModule,
+    MatSelectModule
   ],
   entryComponents: [
     NgbdModalContent,

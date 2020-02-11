@@ -81,11 +81,12 @@ export class LiveChartComponent implements OnInit {
       this.persoon = r;
       this.openDialog();
     });
-
+    console.log('VOOR ADD MELDING:', this.melding);
     this.meldingService.addMelding(this.melding).subscribe(r => {
+      console.log('NA ADD MELDING:', r);
       this.meldingService.getMeldingByID(r.meldingID).subscribe(re => {
         this.melding = re;
-        console.log(re);
+        console.log('laatste melding', re);
       });
     });
   }

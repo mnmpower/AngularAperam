@@ -10,6 +10,7 @@ export class Persoon {
   wachtwoord: string;
   meldingen: Melding[];
   type: Type;
+  token: string;
 
   constructor() {
   }

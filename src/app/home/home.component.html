@@ -1,31 +1,25 @@
-
-
 <div *ngIf="!nav.visible">
 
-<div class="home section">
+  <div class="home section">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <img src="../../assets/Images/logo_no_background.png" width="300px" alt="Logo">
+      <div class="md-form">
+        <div>
+          <label for="inputUsernameLogin" class="">Username: </label>
+          <input id="inputUsernameLogin" formControlName="Usernaam" type="text" class="form-control"
+                 placeholder="Enter username">
+        </div>
 
-  <img src="../../assets/Images/logo_no_background.png" width="300px" alt="Logo" >
-  <div class="md-form">
-    <div>
-    <label  class="">Username: </label>
-    <input type="text" class="form-control">
-    </div>
+        <div>
+          <label for="inputPasswordLogin" class="">Password: </label>
+          <input id="inputPasswordLogin" type="password" placeholder="Password" formControlName="Wachtwoord"
+                 class="form-control">
+        </div>
 
-    <div>
-    <label  class="">Password: </label>
-    <input type="password"  class="form-control">
-    </div>
-
-    <button (click)="DoorgaanAlsGuest()">Login</button>
-    <button (click)="DoorgaanAlsAdmin()">Sign Up</button>
+        <button (click)="onSubmit()">Login</button>
+      </div>
+    </form>
   </div>
 
-
-
-
-  <button (click)="DoorgaanAlsGuest()">Doorgaan als guest</button>
-  <button (click)="DoorgaanAlsAdmin()">Doorgaan als Admin</button>
-
+  <div *ngIf="nav.visible"></div>
 </div>
-
-<div *ngIf="nav.visible"></div>

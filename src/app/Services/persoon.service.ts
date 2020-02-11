@@ -43,4 +43,9 @@ export class PersoonService {
         headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
       });
   }
+
+  // haal makerID/bedrijfID/adminID van current user op
+  getIdOfCurrentUser(): Observable<number> {
+    return this.http.get<number>(this.Base_URL + 'Persoon/idcurrentuser');
+  }
 }
