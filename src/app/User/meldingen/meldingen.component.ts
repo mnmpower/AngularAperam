@@ -19,7 +19,7 @@ export class MeldingenComponent implements OnInit {
   ngOnInit() {
    this.meldingService.getMeldingen().subscribe(r => {
       console.log(r);
-     this.meldingen = r;
+      this.meldingen = r;
    });
   }
 
