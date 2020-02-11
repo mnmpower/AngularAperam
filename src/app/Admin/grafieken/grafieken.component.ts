@@ -4,6 +4,11 @@ import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 import { Label } from 'ng2-charts';
 import { MeldingService } from 'src/app/Services/melding.service';
 
+export interface barChartLabels{
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-grafieken',
   templateUrl: './grafieken.component.html',
@@ -23,6 +28,7 @@ export class GrafiekenComponent implements OnInit {
     }
   };
   public barChartLabels: Label[] = ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli','Augustus','September','November','Oktober','December'];
+  //public barChartLabels: Label[] = [{value:'Januari', viewValue: 'Januari'}, 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli','Augustus','September','November','Oktober','December'];
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
   public barChartPlugins = [pluginDataLabels];
