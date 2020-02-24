@@ -1,13 +1,18 @@
-<h4>Filter maanden</h4>
-<mat-form-field>
-  <mat-label></mat-label>
-  <mat-select>
-    <mat-option *ngFor="let label of barChartLabels" [value]="label.value">
-      {{label}}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
+<h4 class="pt-3">Filter maanden</h4>
+<!--<mat-form-field>-->
+<!--  <mat-label></mat-label>-->
+<!--  <mat-select>-->
+<!--    <mat-option *ngFor="let label of barChartLabels" [value]="label.value">-->
+<!--      {{label}}-->
+<!--    </mat-option>-->
+<!--  </mat-select>-->
+<!--</mat-form-field>-->
 
+<form action="jaarForm" (ngSubmit)="update()">
+  <input type="text" [(ngModel)]="jaar" name="jaarInput">
+  <br>
+  <button type="submit" class="btn btn-info">Zoek jaartal</button>
+</form>
 
 
 <div>
